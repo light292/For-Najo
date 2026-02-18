@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+<style>
+body {
+    text-align:center;
+    font-family:Arial;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+}
+#content {
+    display:none;
+}
+img {
+    width:200px;
+    margin:10px;
+    border-radius:15px;
+}
+button {
+    padding:10px 20px;
+    border:none;
+    background:black;
+    color:white;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>ادخلي الرقم السري ❤️</h2>
+<input type="password" id="pass">
+<button onclick="checkPass()">دخول</button>
+
+<div id="content">
+    <h1>Happy 1 Year My Love 💖</h1>
+    <p id="timer"></p>
+
+    <img src="https://i.imgur.com/yourphoto1.jpg">
+    <img src="https://i.imgur.com/yourphoto2.jpg">
+
+    <h3>
+    سنة كاملة مع أجمل إنسانة في حياتي 💕  
+    كل لحظة معاكي كانت نعمة من ربنا  
+    وبوعدك إن اللي جاي أجمل بكتير ✨
+    </h3>
+</div>
+
+<script>
+function checkPass(){
+    var password = document.getElementById("pass").value;
+    if(password == "2052007"){
+        document.getElementById("content").style.display="block";
+    } else {
+        alert("الرقم السري غلط 😅");
+    }
+}
+
+var startDate = new Date("2025-02-22");
+var today = new Date();
+var diffTime = today - startDate;
+var days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+document.getElementById("timer").innerHTML = "بقالنا مع بعض " + days + " يوم ❤️";
+</script>
+
+</body>
+</html>
