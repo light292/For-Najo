@@ -33,11 +33,11 @@ canvas{
     transform:translate(-50%,-50%);
     width:90%;
     max-width:650px;
-    padding:40px;
-    border-radius:25px;
-    backdrop-filter:blur(20px);
+    padding:50px;
+    border-radius:30px;
+    backdrop-filter:blur(30px);
     background:rgba(255,255,255,0.05);
-    box-shadow:0 0 50px rgba(255,0,150,0.5);
+    box-shadow:0 0 80px rgba(255,0,150,0.6);
     text-align:center;
     animation:fadeUp 2s ease forwards;
 }
@@ -49,44 +49,44 @@ canvas{
 
 h1{
     font-family:'Great Vibes',cursive;
-    font-size:3em;
+    font-size:3.5em;
     color:#ff4da6;
-    text-shadow:0 0 25px #ff1a75;
+    text-shadow:0 0 35px #ff1a75;
 }
 
 img{
     width:180px;
-    border-radius:15px;
+    border-radius:20px;
     margin:10px;
     transition:0.5s;
-    box-shadow:0 0 25px rgba(255,0,150,0.6);
+    box-shadow:0 0 30px rgba(255,0,150,0.7);
 }
 
 img:hover{
-    transform:scale(1.1) rotate(2deg);
+    transform:scale(1.15) rotate(3deg);
 }
 
 button{
     margin-top:15px;
-    padding:12px 25px;
+    padding:15px 30px;
     border:none;
-    border-radius:30px;
+    border-radius:40px;
     background:linear-gradient(45deg,#ff0066,#ff3399);
     color:white;
-    font-weight:600;
+    font-weight:700;
     cursor:pointer;
     transition:0.4s;
-    box-shadow:0 0 15px #ff0066;
+    box-shadow:0 0 25px #ff0066;
 }
 
 button:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 35px #ff3399;
+    transform:scale(1.15);
+    box-shadow:0 0 50px #ff3399;
 }
 
 input{
-    padding:10px;
-    border-radius:20px;
+    padding:12px;
+    border-radius:25px;
     border:none;
     outline:none;
     margin-top:10px;
@@ -98,21 +98,23 @@ input{
 .heart{
     position:fixed;
     bottom:-20px;
-    font-size:20px;
+    font-size:25px;
     color:#ff4da6;
     animation:float 6s linear infinite;
 }
 
 @keyframes float{
     0%{transform:translateY(0) scale(1)}
-    100%{transform:translateY(-110vh) scale(1.5)}
+    100%{transform:translateY(-110vh) scale(1.7)}
 }
 
 #typing{
     margin-top:20px;
-    min-height:60px;
+    min-height:100px;
     font-weight:300;
-    line-height:1.6;
+    line-height:1.8;
+    font-size:1.3em;
+    text-shadow:0 0 10px #ff1a75;
 }
 </style>
 </head>
@@ -137,7 +139,7 @@ input{
 
     <!-- Romantic Music -->
     <audio id="music" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7cf5a32d27.mp3?filename=romantic-guitar-10827.mp3" type="audio/mp3">
     </audio>
 </div>
 </div>
@@ -150,6 +152,7 @@ function checkPass(){
         document.getElementById("music").play();
         createHearts();
         startTyping();
+        explodeHearts();
     }else{
         alert("الرقم السري غلط 😅");
     }
@@ -172,7 +175,20 @@ function createHearts(){
         heart.innerHTML="❤";
         document.body.appendChild(heart);
         setTimeout(()=>heart.remove(),6000);
-    },500);
+    },400);
+}
+
+/* Exploding Hearts on entry */
+function explodeHearts(){
+    for(let i=0;i<20;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.style.left=Math.random()*100+"%";
+        heart.style.bottom="0px";
+        heart.style.fontSize=(15+Math.random()*20)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    }
 }
 
 /* Typing Effect */
@@ -197,12 +213,12 @@ canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
 let stars=[];
-for(let i=0;i<200;i++){
+for(let i=0;i<300;i++){
     stars.push({
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
         radius:Math.random()*1.5,
-        speed:Math.random()*0.5
+        speed:Math.random()*0.9
     });
 }
 
